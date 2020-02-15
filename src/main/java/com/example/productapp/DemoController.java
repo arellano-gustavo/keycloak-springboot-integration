@@ -17,16 +17,23 @@ public class DemoController {
 			value = "/products", 
 			produces = "application/json; charset=utf-8")
 	public String getProducts(){
-		String res="{-name-:-gus-}";
+		String res="{-name-:-products-}";
 		return res.replace('-', '"');
 	}
-
+	@GetMapping(
+			value = "/services", 
+			produces = "application/json; charset=utf-8")
+	public String getServices(){
+		String res="{-name-:-services-}";
+		return res.replace('-', '"');
+	}
 	@GetMapping(
 			path = "/logout",
 			produces = "application/json; charset=utf-8")
 	public String logout(HttpServletRequest request) throws ServletException {
+		String name = "tavo";
 		request.logout();
-		String res="{-info-:-you have been loged out-}";
+		String res="{-"+name+"-:-you have been loged out-}";
 		return res.replace('-', '"');
 	}
 	
