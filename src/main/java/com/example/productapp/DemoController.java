@@ -4,6 +4,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/")
 public class DemoController {
+	
+	@PostMapping(
+			value = "/sample", 
+			produces = "application/json; charset=utf-8")
+	public Employee sample(@RequestBody Employee emp){
+		return new Employee("gus", "tavo");
+	}
 	
 	@GetMapping(
 			value = "/products", 
