@@ -11,12 +11,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-	private static final Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);
-			
-	@Autowired
-	private CustomInterceptor customInterceptor;
+    private static final Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);
+            
+    @Autowired
+    private CustomInterceptor customInterceptor;
 
-	
+    
     /**
      * {@inheritDoc}
      */
@@ -34,17 +34,17 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
       .addResourceLocations("classpath:/dist/css/");
 
     }
-	
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(customInterceptor);
-	}
-	
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(customInterceptor);
+    }
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
        registry
-       		.addMapping("/**")
-       		.allowedOrigins("*")
-       		.allowedMethods("GET", "POST","PUT", "DELETE");
+               .addMapping("/**")
+               .allowedOrigins("*")
+               .allowedMethods("GET", "POST","PUT", "DELETE");
     }
 }
